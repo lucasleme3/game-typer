@@ -9,6 +9,11 @@ $(function() {
     $("#botao-reiniciar").click(reiniciaJogo);
 })
 
+function atualizaTempoInicial(tempo){
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempo);
+}
+
 function atualizaTamanhoFrase() {
     var frase = $(".frase").text(); //Pegando o conteudo da frase com a função text();
     var numPalavras = frase.split(" ").length; //Quebrando a frase nos espaços com a função split() para saber o numero de palavras da frase. e então usando a função .length para saber o tamanho do array retornado, ou seja o numero de palavras
