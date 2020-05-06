@@ -1,3 +1,4 @@
+$("#botao-placar").click(mostraPlacar);
 
 function inserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
@@ -36,6 +37,14 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault(); //evitar o comportamento padrao do html
-    $(this).parent().parent().remove();
-    // console.log(this);
+    var linha = $(this).parent().parent();
+    linha.fadeOut(500); //vai esmaecendo o elemento até sair da tela, mas nao o remove. apenas fica com o display: none
+    setTimeout(function() {
+        linha.remove();
+    }, 500);
+}
+
+function mostraPlacar(){
+    // $(".placar").toggle();
+    $(".placar").stop().slideToggle(1000);
 }
