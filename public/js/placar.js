@@ -11,6 +11,16 @@ function inserePlacar() {
     
     corpoTabela.prepend(linha);
     //corpoTabela.append(linha); //insere uma linha ao final do corpo da tabela
+    $(".placar").slideDown(500);
+    scrollPlacar();
+}
+
+function scrollPlacar() {
+    var posicaoPlacar = $(".placar").offset().top;
+    $("html, body").animate(
+    {
+        scrollTop: posicaoPlacar+"px"
+    },1000);
 }
 
 function novaLinha(usuario, palavras) {
