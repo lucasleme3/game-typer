@@ -38,8 +38,8 @@ function inicializaContadores() {
 }
 
 function inicializaCronometro(){
-    var tempoRestante = $("#tempo-digitacao").text(); //pegando o conteudo do span com id tempo-digitacao no html
     campo.one("focus", function(){
+    var tempoRestante = $("#tempo-digitacao").text(); //pegando o conteudo do span com id tempo-digitacao no html
     cronometroID = setInterval(function(){ //funcao para decrescer o tempo restante a cada 1000 milisegundos = 1 segundo.
     tempoRestante--;
     //console.log(tempoRestante);
@@ -53,8 +53,8 @@ function inicializaCronometro(){
 }
 
 function inicializaMarcadores(){
-    var frase = $(".frase").text();
     campo.on("input", function(){
+    var frase = $(".frase").text();
     var digitado = campo.val(); //o quanto o usuario já escreveu
     var comparavel = frase.substr(0, digitado.length); //um pedaço da frase uma substring da posição 0 até o quanto eu já digitei(digitado.length)
     //console.log("Digitado: " + digitado);
