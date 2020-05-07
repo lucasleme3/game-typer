@@ -59,3 +59,23 @@ function mostraPlacar(){
     // $(".placar").toggle();
     $(".placar").stop().slideToggle(1000);
 }
+
+function sincronizaPlacar() {
+    var placar = []; //array para aos poucos pegar os dados do placar inserido
+    var linhas = $("tbody>tr") //todas as trs que sao filhas diretas de tbody
+
+    linhas.each(function() {
+        var usuario = $(this).find("td:nth-child(1)").text(); //td que é o primeiro filho do tr
+        var palavras = $(this).find("td:nth-child(2)").text(); //td que é o segundo filho do tr
+        
+        var score ={ //criando um objeto para enviar ao servidor
+            usuario: usuario,
+            pontos: palavras
+        };
+        
+        placar.push(score);
+        
+    });
+    // console.log(placar);
+    
+}
