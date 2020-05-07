@@ -1,15 +1,18 @@
 $("#botao-frase").click(fraseAleatoria);
 
 function fraseAleatoria() {
+    $("#spinner").toggle(); //exibe o spinner
+
     $.get("http://localhost:3000/frases", trocaFraseAleatoria)
     .fail(function(){ //se algo der erado, essa função é executada
         $("#erro").toggle();
         
         setTimeout(function(){
             $("#erro").toggle();
-
-        }, 2000);
-        
+        }, 2000);  
+    })
+    .always(function(){ //sempre será executada
+        $("#spinner").toggle(); //esconde o spinner
     });
 }
 
