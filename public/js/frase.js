@@ -1,7 +1,16 @@
 $("#botao-frase").click(fraseAleatoria);
 
 function fraseAleatoria() {
-    $.get("http://localhost:3000/frases", trocaFraseAleatoria);
+    $.get("http://localhost:3000/frases", trocaFraseAleatoria)
+    .fail(function(){ //se algo der erado, essa função é executada
+        $("#erro").toggle();
+        
+        setTimeout(function(){
+            $("#erro").toggle();
+
+        }, 2000);
+        
+    });
 }
 
 function trocaFraseAleatoria(data){
