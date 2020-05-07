@@ -1,4 +1,6 @@
 $("#botao-frase").click(fraseAleatoria);
+$("#botao-frase-id").click(buscaFrase);
+
 
 function fraseAleatoria() {
     $("#spinner").toggle(); //exibe o spinner
@@ -23,5 +25,30 @@ function trocaFraseAleatoria(data){
 
     atualizaTamanhoFrase();
     atualizaTempoInicial(data[numAleatorio].tempo); //parametro que vai ser passado para a função
+}
+
+function buscaFrase() {
+    $("#spinner").toggle();
+    var fraseId = $("#frase-id").val();
+    var dados = { id: fraseId}; //objeto js
+    $.get("http://localhost:3000/frases", dados, trocaFrase) //aceita um objeto como parametro para enviar junto com a requisição
+    .fail(function(){ 
+        $("#erro").toggle();
+        
+        setTimeout(function(){
+            $("#erro").toggle();
+        }, 2000);  
+    })
+    .always(function(){
+        $("#spinner").toggle();
+    });
+}
+
+function trocaFrase(data) {
+    //console.log(data);
+    var frase = $(".frase");
+    frase.text(data.texto);
+    atualizaTamanhoFrase();
+    atualizaTempoInicial(data.tempo);
 }
 
