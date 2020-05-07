@@ -94,6 +94,7 @@ function atualizaPlacar() {
 
         $(data).each(function() { //pra cada data recebida criará uma linha com a função já criada 
             var linha = novaLinha(this.usuario, this.pontos); //pegando os usuarios e os pontos
+            linha.find(".botao-remover").click(removeLinha);
             $("tbody").append(linha);
         });
     });
